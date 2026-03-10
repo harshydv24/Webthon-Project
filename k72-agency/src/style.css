@@ -1,44 +1,163 @@
-.hero{
-  height:100vh;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+/* ===== NAVBAR ===== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  z-index: 100;
 }
 
-/* VIDEO */
-
-.backgroundVideo{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-2;
+.logo {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
-
-
-.overlay{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.55);
-  z-index:-1;
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 52px;
+  height: 40px;
+  background: #000;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
+.menuLine {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+}
 
-.heroText{
-  font-size:64px;
-  max-width:900px;
-  line-height:1.1;
-  font-weight:600;
+/* ===== HERO ===== */
 
-  opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp 1.2s ease forwards;
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 32px;
+}
+
+.heroText {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(48px, 10vw, 150px);
+  font-weight: 400;
+  line-height: 0.95;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15em;
+  white-space: nowrap;
+}
+
+/* ===== INLINE VIDEO PILL ===== */
+
+.inlineVideoWrapper {
+  display: inline-flex;
+  width: 2.2em;
+  height: 0.55em;
+  border-radius: 0.3em;
+  overflow: hidden;
+  vertical-align: middle;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.inlineVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== CREATIVITY ELLIPSE ===== */
+
+.creativityWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.creativityEllipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 140%;
+  pointer-events: none;
+}
+
+/* ===== DESCRIPTION ===== */
+
+.heroDescription {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  max-width: 340px;
+  text-align: right;
+  z-index: 2;
+}
+
+.heroDescription p {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #fff;
+  font-weight: 300;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
