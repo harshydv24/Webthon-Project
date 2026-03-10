@@ -14,6 +14,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* ===== LOGO CONTROLS ===== */
+  --logo-height: 70px;
+  --logo-top: 24px;
+  --logo-left: 32px;
 }
 
 body {

@@ -1,6 +1,7 @@
 function Hero() {
   return (
     <section className="hero">
+      {/* Background video */}
       <video
         autoPlay
         muted
@@ -11,6 +12,7 @@ function Hero() {
         <source src="/videos/v1.mp4" type="video/mp4" />
       </video>
 
+      {/* Title + inline video */}
       <div className="heroContent">
         <h1 className="heroText">
           <span className="heroLine">THE SPARK</span>
@@ -39,15 +41,27 @@ function Hero() {
             </span>
           </span>
         </h1>
+      </div>
 
-        <div className="heroDescription">
-          <p>
-            K72 is an agency that thinks about every action to nourish the brand.
-            Tomorrow, in 5 months and in 5 years. We look for the friction that
-            creates the spark to generate emotion. To ensure an honest relationship,
-            we say without filter our convictions.
-          </p>
-        </div>
+      {/* Description paragraph — bottom right */}
+      <div className="heroDescription">
+        <p>
+          K72 is an agency that builds brands from every angle. Today, tomorrow
+          and years from now. We think the best sparks fly when comfort zones get
+          left behind and friction infuses our strategies, brands and
+          communications with real feeling. We're transparent, honest and say
+          what we mean, and when we believe in something, we're all in.
+        </p>
+      </div>
+
+      {/* Big buttons — bottom */}
+      <div className="heroButtons">
+        <a href="#projects" className="bigButton">
+          <span className="bigButtonText">PROJECTS</span>
+        </a>
+        <a href="#agence" className="bigButton">
+          <span className="bigButtonText">AGENCE</span>
+        </a>
       </div>
     </section>
   );
