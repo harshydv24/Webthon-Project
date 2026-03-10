@@ -141,16 +141,20 @@
   bottom: 32px;
   right: 32px;
   max-width: 340px;
-  text-align: right;
+  text-align: left;
   z-index: 2;
 }
 
 .heroDescription p {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
+  font-family: Lausanne, -apple-system, BlinkMacSystemFont, "avenir next", avenir, "segoe ui", "helvetica neue", helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-size: 13.125px;
+  line-height: 19.6875px;
   color: #fff;
   font-weight: 300;
+  text-indent: 65.625px;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ===== ANIMATION ===== */
