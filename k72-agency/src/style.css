@@ -8,37 +8,231 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 32px;
+  padding: var(--logo-top) var(--logo-left);  --logo-height: 150px;   /* change this to resize the logo */
+  --logo-top: 0px;       /* change this to adjust top margin */
+  --logo-left: 10px;      /* change this to adjust left margin */
   z-index: 100;
 }
 
 .logo {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.02em;
+  height: var(--logo-height);
+  width: auto;
+  object-fit: contain;
 }
 
 .menuButton {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 6px;
-  width: 52px;
-  height: 40px;
+
+  width: 220px;
+  height: 50px;
+
   background: #000;
   border: none;
   cursor: pointer;
   padding: 0;
+
+  overflow: hidden;
 }
 
+/* sliding hover layer */
+
+.menuButton::before {
+  content: "";
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background: #cef74e;
+
+  top: -100%;
+  left: 0;
+
+  transition: top 0.25s cubic-bezier(0.86, 0, 0.24, 1);
+  z-index: 1;
+}
+
+/* hover animation */
+
+.menuButton:hover::before {
+  top: 0;
+}
+
+/* menu lines */
+
 .menuLine {
+  position: relative;
   display: block;
   width: 24px;
   height: 2px;
   background: #fff;
+  z-index: 2;
+
+  transition: background 0.3s ease;
+}
+
+/* change line color when background appears */
+
+.menuButton:hover .menuLine {
+  background: #000;
+}
+
+/* ===== MENU OVERLAY ===== */
+
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.menuOverlay.menuOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.menuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--logo-top) var(--logo-left);
+  flex-shrink: 0;
+}
+
+.menuHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menuHeaderLeft .logo {
+  height: var(--logo-height);
+}
+
+.menuLang {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  gap: 6px;
+}
+
+.menuLangActive {
+  color: #fff;
+}
+
+.menuLangDivider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.menuCloseButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuNav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+}
+
+.menuNavItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(36px, 8vw, 200px);
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.menuNavItem:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Default label */
+.menuNavLabel {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.menuNavItem:hover .menuNavLabel {
+  opacity: 0;
+}
+
+/* Hover overlay — slides in from top */
+.menuNavHover {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #cef74e;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: top 0.35s cubic-bezier(0.86, 0, 0.24, 1);
+  z-index: 2;
+}
+
+.menuNavItem:hover .menuNavHover {
+  top: 0;
+}
+
+/* Marquee scrolling text */
+.menuNavMarquee {
+  display: flex;
+  white-space: nowrap;
+  animation: marqueeScroll 8s linear infinite;
+}
+
+.menuNavMarquee span {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(36px, 8vw, 200px);
+  font-weight: 500;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ===== HERO ===== */
@@ -138,24 +332,62 @@
 
 .heroDescription {
   position: absolute;
-  bottom: 32px;
+  bottom: 100px;
   right: 32px;
-  max-width: 340px;
-  text-align: left;
+  max-width: 320px;
+  text-align: right;
   z-index: 2;
 }
 
 .heroDescription p {
-  font-family: Lausanne, -apple-system, BlinkMacSystemFont, "avenir next", avenir, "segoe ui", "helvetica neue", helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
-  font-size: 13.125px;
-  line-height: 19.6875px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.65;
   color: #fff;
   font-weight: 300;
-  text-indent: 65.625px;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
 }
+
+/* ===== BUTTONS SECTION ===== */
+
+.heroButtons {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  right: 32px;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+}
+
+.bigButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 60px;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+
+.bigButton:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.bigButtonText {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+
 
 /* ===== ANIMATION ===== */
 
