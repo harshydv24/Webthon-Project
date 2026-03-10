@@ -48,6 +48,12 @@ function Hero() {
             we say without filter our convictions.
           </p>
         </div>
+
+        <div className="heroBottom">
+  <span className="heroPill">WORK</span>
+  <span className="heroPill">AGENCY</span>
+</div>
+
       </div>
     </section>
   );
