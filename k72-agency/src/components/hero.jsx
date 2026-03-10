@@ -1,4 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 function Hero() {
+
+  const navigate = useNavigate();
+
   return (
     <section className="hero">
       <video
@@ -50,9 +55,20 @@ function Hero() {
         </div>
 
         <div className="heroBottom">
-  <span className="heroPill">WORK</span>
-  <span className="heroPill">AGENCY</span>
-</div>
+          <span
+            className="heroPill"
+            onClick={() => navigate("/work")}
+          >
+            WORK
+          </span>
+
+          <span
+            className="heroPill"
+            onClick={() => navigate("/agency")}
+          >
+            AGENCY
+          </span>
+        </div>
 
       </div>
     </section>
@@ -60,3 +76,7 @@ function Hero() {
 }
 
 export default Hero;
+
+
+
+

@@ -5,5 +5,8 @@
     "dev": "npm run dev --prefix k72-agency",
     "build": "npm run build --prefix k72-agency",
     "preview": "npm run preview --prefix k72-agency"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.13.1"
   }
 }

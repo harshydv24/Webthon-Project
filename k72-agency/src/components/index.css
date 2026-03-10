@@ -60,3 +60,26 @@ body {
   color: yellow;
   border-color: yellow;
 }
+
+.workPage{
+  padding:60px;
+  background:#e9e9e9;
+  min-height:100vh;
+}
+
+.workTitle{
+  font-size:120px;
+  font-weight:900;
+}
+
+.workGrid{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.workItem{
+  height:250px;
+  background:black;
+}
